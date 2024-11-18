@@ -1,43 +1,34 @@
-import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
 import { SiOpenproject } from "react-icons/si";
 import { IoMdPricetag } from "react-icons/io";
 import { FaArrowLeft } from "react-icons/fa";
 
-import { fetchProducts } from "../features/product/prouductSlice";
-import Loader from "../components/Loader";
+import Loader from "./../components/Loader";
+import { useProductsDetails } from "../context/ProductContext";
 
 import styles from "./DetailsPage.module.css";
 
 function DetailsPage() {
   const { id } = useParams();
-  const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(fetchProducts());
-  }, []);
+  const productsDetails = useProductsDetails(+id);
 
-  const productDetails = useSelector((store) =>
-    store.product.products.find((i) => i.id === +id)
-  );
-
-  if (!productDetails) return <Loader />;
+  if (!productsDetails) return <Loader />;
 
   return (
     <div className={styles.container}>
-      <img src={productDetails.image} alt={productDetails.title} />
+      <img src={productsDetails.image} alt={productsDetails.title} />
       <div className={styles.information}>
-        <h3 className={styles.title}>{productDetails.title}</h3>
-        <p className={styles.description}>{productDetails.description}</p>
+        <h3 className={styles.title}>{productsDetails.title}</h3>
+        <p className={styles.description}>{productsDetails.description}</p>
         <p className={styles.category}>
           <SiOpenproject />
-          {productDetails.category}
+          {productsDetails.category}
         </p>
         <div>
           <span className={styles.price}>
             <IoMdPricetag />
-            {productDetails.price} $
+            {productsDetails.price} $
           </span>
           <Link to="/products">
             <FaArrowLeft />

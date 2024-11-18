@@ -1,6 +1,4 @@
-import { useContext, useReducer } from "react";
-import { createContext } from "react";
-
+import { createContext, useContext, useReducer } from "react";
 import { sumProducts } from "../helper/helper";
 
 const initialState = {
@@ -29,6 +27,7 @@ const reducer = (state, action) => {
         ...state,
         selectedItems: [...newSelectedItems],
         ...sumProducts(newSelectedItems),
+        checkout: false,
       };
     case "INCREASE":
       const increaseIndex = state.selectedItems.findIndex(
@@ -40,10 +39,10 @@ const reducer = (state, action) => {
         ...sumProducts(state.selectedItems),
       };
     case "DECREASE":
-      const decreaseIndex = state.selectedItems.findIndex(
+      const DecreaseIndex = state.selectedItems.findIndex(
         (item) => item.id === action.payload.id
       );
-      state.selectedItems[decreaseIndex].quantity--;
+      state.selectedItems[DecreaseIndex].quantity--;
       return {
         ...state,
         ...sumProducts(state.selectedItems),
@@ -60,6 +59,7 @@ const reducer = (state, action) => {
       throw new Error("Invalid Action!");
   }
 };
+
 const CartContext = createContext();
 
 function CartProvider({ children }) {

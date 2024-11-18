@@ -8,6 +8,7 @@
   margin: 0 10px 60px;
   border-radius: 10px;
 }
+
 .header a {
   font-size: 1.5rem;
   font-weight: 600;
@@ -28,7 +29,7 @@
   width: 20px;
   height: 20px;
   line-height: 20px;
-  background-color: #4b40409d;
+  background-color: #00000083;
   color: #fff;
   border-radius: 50%;
   position: absolute;
@@ -38,10 +39,11 @@
 .footer {
   text-align: center;
   background-color: #fe5d42;
+  color: #fff;
   padding: 20px;
   margin: 10px;
   margin-top: 80px;
   border-radius: 10px;
-  color: #fff;
-  font-size: x-large;
+  font-weight: 600;
+  font-size: 1.5rem;
 }

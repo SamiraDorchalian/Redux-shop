@@ -11,6 +11,7 @@
   border: 2px dashed #fe5d42;
   border-radius: 50px;
   margin: 10px;
+  margin-right: 50px;
 }
 
 .information {
@@ -25,6 +26,10 @@
   font-size: 1.5rem;
   margin-bottom: 40px;
 }
+
+.title {
+}
+
 .description {
   color: gray;
   width: 500px;
@@ -44,6 +49,7 @@
   display: flex;
   justify-content: space-between;
 }
+
 .information a {
   display: flex;
   align-items: center;
@@ -54,4 +60,7 @@
 }
 .information a svg {
   margin-right: 10px;
+}
+
+.price {
 }

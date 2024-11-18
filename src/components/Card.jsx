@@ -1,30 +1,23 @@
 import { Link } from "react-router-dom";
+import { TbListDetails, TbShoppingBagCheck } from "react-icons/tb";
 
-import { useDispatch, useSelector } from "react-redux";
-
-import { TbListDetails } from "react-icons/tb";
-import { TbShoppingBagCheck } from "react-icons/tb";
-import { MdDeleteOutline } from "react-icons/md";
-
-import { productQuantity, shortenText } from "../helper/helper";
-
-import {
-  addItem,
-  decrease,
-  increase,
-  removeItem,
-} from "../features/cart/cartSlice";
+// import { useCart } from "../context/CartProvider";
+import { shortenText, productQuantity } from "../helper/helper";
 
 import styles from "./Card.module.css";
+import { MdDeleteOutline } from "react-icons/md";
 
 function Card({ data }) {
   const { id, title, image, price } = data;
 
-  const state = useSelector((store) => store.cart);
-  const dispatch = useDispatch();
-  console.log(state);
+  // const [state, dispatch] = useCart();
 
-  const quantity = productQuantity(state, id);
+  // const quantity = productQuantity(state, id);
+  const quantity = 0;
+
+  const clickHandler = (type) => {
+    // dispatch({ type, payload: data });
+  };
 
   return (
     <div className={styles.card}>
@@ -37,20 +30,23 @@ function Card({ data }) {
         </Link>
         <div>
           {quantity === 1 && (
-            <button onClick={() => dispatch(removeItem(data))}>
+            <button onClick={() => clickHandler("REMOVE_ITEM")}>
               <MdDeleteOutline />
             </button>
           )}
+
           {quantity > 1 && (
-            <button onClick={() => dispatch(decrease(data))}>-</button>
+            <button onClick={() => clickHandler("DECREASE")}>-</button>
           )}
+
           {!!quantity && <span>{quantity}</span>}
+
           {quantity === 0 ? (
-            <button onClick={() => dispatch(addItem(data))}>
+            <button onClick={() => clickHandler("ADD_ITEM")}>
               <TbShoppingBagCheck />
             </button>
           ) : (
-            <button onClick={() => dispatch(increase(data))}>+</button>
+            <button onClick={() => clickHandler("INCREASE")}>+</button>
           )}
         </div>
       </div>

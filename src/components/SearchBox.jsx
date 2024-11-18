@@ -8,7 +8,6 @@ function SearchBox({ search, setSearch, setQuery }) {
   const searchHandler = () => {
     setQuery((query) => createQueryObject(query, { search }));
   };
-
   return (
     <div className={styles.search}>
       <input

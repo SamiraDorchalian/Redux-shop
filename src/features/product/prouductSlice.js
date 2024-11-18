@@ -1,5 +1,5 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import api from "../../services/config";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import api from "./../../services/config";
 
 const initialState = {
   loading: false,

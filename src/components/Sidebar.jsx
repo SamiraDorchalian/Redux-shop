@@ -9,10 +9,10 @@ function Sidebar({ query, setQuery }) {
   const categoryHandler = (event) => {
     const { tagName } = event.target;
     const category = event.target.innerText.toLowerCase();
-
     if (tagName !== "LI") return;
     setQuery((query) => createQueryObject(query, { category }));
   };
+
   return (
     <div className={styles.sidebar}>
       <div>

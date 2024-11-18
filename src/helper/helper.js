@@ -4,15 +4,17 @@ const shortenText = (text) => {
 
 const searchProducts = (products, search) => {
   if (!search) return products;
-  const searchedProducts = products.filter((p) =>
-    p.title.toLowerCase().includes(search)
+  const searchedProducts = products.filter((product) =>
+    product.title.toLowerCase().includes(search)
   );
   return searchedProducts;
 };
 
 const filterProducts = (products, category) => {
   if (!category) return products;
-  const filteredProducts = products.filter((p) => p.category === category);
+  const filteredProducts = products.filter(
+    (product) => product.category === category
+  );
   return filteredProducts;
 };
 
@@ -30,21 +32,23 @@ const createQueryObject = (currentQuery, newQuery) => {
 
 const getInitialQuery = (searchParams) => {
   const query = {};
-  const categoty = searchParams.get("category");
+  const category = searchParams.get("category");
   const search = searchParams.get("search");
-  if (categoty) query.category = categoty;
+  if (category) query.category = category;
   if (search) query.search = search;
   return query;
 };
 
-const sumPrice = (products) => {
-  return products
+const sumProducts = (products) => {
+  const itemsCounter = products.reduce(
+    (counter, product) => counter + product.quantity,
+    0
+  );
+  const total = products
     .reduce((total, product) => total + product.price * product.quantity, 0)
     .toFixed(2);
-};
 
-const sumQuantity = (products) => {
-  return products.reduce((counter, product) => counter + product.quantity, 0);
+  return { itemsCounter, total };
 };
 
 const productQuantity = (state, id) => {
@@ -62,7 +66,6 @@ export {
   filterProducts,
   createQueryObject,
   getInitialQuery,
-  sumPrice,
-  sumQuantity,
+  sumProducts,
   productQuantity,
 };
