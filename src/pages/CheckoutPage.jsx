@@ -1,10 +1,14 @@
 // import { useCart } from "../context/CartProvider";
+
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 import BasketCard from "./../components/BasketCard";
 import BasketSidebar from "../components/BasketSidebar";
 
 import styles from "./CheckoutPage.module.css";
+
+import empty from "../images/image-checkout-empty.png";
 
 function CheckoutPage() {
   // const [state, dispatch] = useCart();
@@ -16,7 +20,13 @@ function CheckoutPage() {
   if (!state.itemsCounter) {
     return (
       <div className={styles.conatiner}>
-        <p>Empty</p>
+        <div className={styles.empty}>
+          <img src={empty} alt="empty" />
+          <div className={styles.text}>
+            <p> (´。＿。｀) صفحه خرید شما خالی است </p>
+            <Link to="/products">Back To Shop</Link>
+          </div>
+        </div>
       </div>
     );
   }

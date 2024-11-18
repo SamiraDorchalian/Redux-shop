@@ -6,6 +6,28 @@
   min-height: 1000px;
 }
 
+.empty {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.empty img {
+  width:80%;
+  height: 100%;
+}
+.text p,
+.text a {
+  display: inline-block;
+  align-items: center;
+  text-align: end;
+  font-size: 1.5rem;
+  font-weight: 600;
+  background-color: #fe5d42;
+  color: #fff;
+  padding: 10px;
+  margin-bottom: 30px;
+  border-radius: 10px;
+}
 .products {
   width: 100%;
 }
