@@ -23,7 +23,7 @@ function CheckoutPage() {
         <div className={styles.empty}>
           <img src={empty} alt="empty" />
           <div className={styles.text}>
-            <p> (´。＿。｀) صفحه خرید شما خالی است </p>
+            <p>Your shopping page is empty (´。＿。｀) </p>
             <Link to="/products">Back To Shop</Link>
           </div>
         </div>
